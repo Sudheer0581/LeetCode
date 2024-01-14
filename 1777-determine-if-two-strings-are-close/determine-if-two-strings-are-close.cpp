@@ -3,8 +3,8 @@ public:
     bool closeStrings(string word1, string word2) {
         vector<int>v1;
         vector<int>v2;
-        map<int,int>mp1;
-        map<int,int>mp2;
+        map<char,int>mp1;
+        map<char,int>mp2;
         for(int i=0;i<word1.size();i++){
             mp1[word1[i]]++;
         }
