@@ -1,24 +1,19 @@
-static int fast_io = []() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    return 0;
-}();
-
 class Solution {
 public:
     int findLengthOfLCIS(vector<int>& nums) {
-        int m=1;
-        int c=1; 
-        for (int i=0; i<nums.size()-1; i++){
+        if(nums.empty())return 0;
+        int c=1;
+        int m=0;
+        for(int i=0;i<nums.size()-1;i++){
             if(nums[i]<nums[i+1]){
-                c++;
-                m=max(m,c);
+                c+=1;
             }
             else{
-                c=1;    
+                m=max(c,m);
+                c=1;
             }
         }
+        m=max(c,m);
         return m;
     }
 };
