@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        int arr[10000001]={0};
+        int arr[100001]={0};
         for(auto it:nums){
             // cout<<it<<" ";
             arr[it]++;
