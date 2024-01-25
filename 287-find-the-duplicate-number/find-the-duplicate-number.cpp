@@ -1,14 +1,12 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        map<int,int>mp;
-        for(int i=0;i<nums.size();i++){
-            mp[nums[i]]++;
+        int arr[10000001]={0};
+        for(auto it:nums){
+            cout<<it<<" ";
+            arr[it]++;
+            if(arr[it]>1) return it;
         }
-        int c=0;
-        for(auto it:mp){
-            if(it.second>1)c+=it.first;
-        }
-        return c;
+        return 0;
     }
 };
