@@ -1,25 +1,20 @@
 class Solution {
 public:
+    vector<vector<int>>v1;
+    void subset(int ind,int n,vector<int> &nums,vector<int> &v){
+        if(ind==n){
+            v1.push_back(v);
+            return;
+        }
+        v.push_back(nums[ind]);
+        subset(ind+1,n,nums,v);
+        v.pop_back();
+        subset(ind+1,n,nums,v);
+    }
     vector<vector<int>> subsets(vector<int>& nums) {
         int n=nums.size();
-        int x =pow(2,n)-1;
-        vector<vector<int>>v;
-        vector<int>v1;
-        for(int i=0;i<=x;i++)
-        {
-            int pos=0;
-            int z=i;
-            while(z){
-                if(z&1){
-                    v1.push_back(nums[pos]);
-                }
-                pos+=1;
-                z>>=1;
-            }
-            v.push_back(v1);
-            v1.clear();
-        }
-        return v;
-        
+        vector<int>v;
+        subset(0,n,nums,v);
+        return v1;
     }
 };
