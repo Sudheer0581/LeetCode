@@ -1,40 +1,31 @@
 class Solution {
 public:
     vector<vector<int>> divideArray(vector<int>& nums, int k) {
-        vector<vector<int>>v1;
-        vector<int>v;
+      
+        vector<int>vec;
+        vector<vector<int>> empty;
+        vector<vector<int>>ans;
         sort(nums.begin(),nums.end());
-        // for(int i=0;i<nums.size();i++){
-        //     cout<<nums[i]<<" ";
-        // }
-        int c=0,f=0;
-        int i=0,j=1;
-        while(j<nums.size()){
-            if(abs(nums[i]-nums[j])<=k and c<=2){
-                v.push_back(nums[j]);
-                c+=1;
-                j+=1;
-                if(c==2){
-                    v.push_back(nums[i]);
-                    v1.push_back(v);
-                    v.clear();
-                    i=j;
-                    j+=1;
-                    c=0;
-                }
-                
+
+        if (nums.size() % 3 != 0)
+            return empty;
+
+        vec.push_back(nums[0]);
+        for(int i=1;i<=nums.size();i++){
+            if(vec.size()<3 && nums[i]-vec[0]>k){
+                return empty;
             }
-            else{
-                f=1;
-                break;
+            else if(vec.size()<3 && nums[i]-vec[0]<=k){
+                vec.push_back(nums[i]);
             }
-        }
-        if(f==0){
-            return v1;
-        }
-        else{
-            v1.clear();
-            return v1;
-        }
+            else if(vec.size()==3){
+                    ans.push_back(vec);
+                    vec.clear();
+                    vec.push_back(nums[i]);
+                }  
+            }
+        
+       // ans.push_back(vec);
+        return ans;
     }
 };
