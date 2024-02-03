@@ -1,34 +1,23 @@
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
-        map<int,int>mp;
-        int c=0;
-        for(int i=0;i<nums.size();i++){
-            mp[nums[i]]++;
-        }
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]<=k){
-                if(mp.find(k-nums[i])!=mp.end()){
-                    if(nums[i]==k-nums[i]){
-                        if(mp[nums[i]]>1){
-                            c+=1;
-                            mp[nums[i]]--;
-                            mp[k-nums[i]]--;
-                        }
-                    }
-                    else{
-                        if(mp[nums[i]]>0 and mp[k-nums[i]]>0)
-                        c+=1;
-                        mp[nums[i]]--;
-                        mp[k-nums[i]]--;
-                    }
-                    
-                }
+        int l=0,r=nums.size()-1,x,c=0;
+        sort(nums.begin(),nums.end());
+        while(l<r){
+            x=nums[l]+nums[r];
+            if(x==k){
+                c+=1;
+                l+=1;
+                r-=1;
             }
-        }
-        for(auto it:mp){
-            cout<<it.first<<" "<<it.second<<endl;
+            else if(x<k){
+                l+=1;
+            }
+            else{
+                r-=1;
+            }
         }
         return c;
     }
+
 };
