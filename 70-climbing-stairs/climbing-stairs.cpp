@@ -1,18 +1,16 @@
 class Solution {
 public:
-     //int fib(int n){
-    //     if(n<=1)return n;
-    //     return fib(n-1)+fib(n-2);
-    // }
-     int climbStairs(int n) {
-    if(n==1)return 1;
-    if(n==2)return 2;
-    int a=0,b=1,c;
-    for(int i=0;i<n;i++){
-        c=a+b;
-        a=b;
-        b=c;
+    int dp[10001];
+    int Fun(int n){
+        if(n==0){
+            return 1;
+        }
+        if(n<0) return 0;
+        if(dp[n]!=-1) return dp[n];
+        return dp[n]=Fun(n-1)+Fun(n-2);
     }
-    return c;
+    int climbStairs(int n) {
+        memset(dp,-1,sizeof(dp));
+        return Fun(n);
     }
 };
