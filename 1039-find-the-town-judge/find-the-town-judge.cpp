@@ -1,23 +1,15 @@
 class Solution {
 public:
-    int findJudge(int n, vector<vector<int>>& t) {
-        if(n==1 and t.size()==0) return 1;
-        int s=0;
-        map<int,int>mp;
-        map<int,int>mp1;
-        for(int i=0;i<t.size();i++){
-            mp[t[i][0]]++;
-            mp1[t[i][1]]++;
+    int findJudge(int n, vector<vector<int>>& trust) {
+        vector<int> a(n+1,0), b(n+1,0);
+        for(int i=0;i<trust.size();i++)
+        {
+            b[trust[i][0]]++;
+            a[trust[i][1]]++;
         }
-        int m=0,k=0;
-        for(auto it:mp1){
-            if(it.second>m){
-                m=it.second;
-                k=it.first;
-            }
-        }
-        if(mp.size()==n-1 and mp.size()==m and mp.find(k)==mp.end()){
-            return k;
+        for(int i=1;i<=n;i++){
+            if(a[i]==n-1 && b[i]==0)
+                return i;
         }
         return -1;
     }
