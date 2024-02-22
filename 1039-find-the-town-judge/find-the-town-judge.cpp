@@ -2,7 +2,7 @@ class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& t) {
         if(n==1 and t.size()==0) return 1;
-        if(n>1 and t.size()==0) return -1;
+        // if(n>1 and t.size()==0) return -1;
         int s=0;
         map<int,int>mp;
         map<int,int>mp1;
