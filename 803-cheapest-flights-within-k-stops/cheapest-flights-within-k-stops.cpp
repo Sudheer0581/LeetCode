@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[1001][1001];
+    int dp[101][1001];
     int Fun(int src,int dst,int k,vector<pair<int,int>>adj[]){
         if(k<0){
             return 1e9;
