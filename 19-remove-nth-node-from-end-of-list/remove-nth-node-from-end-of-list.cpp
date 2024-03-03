@@ -20,9 +20,9 @@ public:
         int x=c-n+1;
         if(head==NULL) return NULL;
         if(x==1){
-            ListNode*temp=head;
+            // ListNode*temp=head;
             head= head->next;
-            delete temp;
+            // delete temp;
             return head;
         }
         ListNode* temp1=head;
@@ -30,7 +30,7 @@ public:
         for(int i=0;i<x-2;i++){
             temp1=temp1->next;
         }
-        cout<<temp1->val<<endl;
+        // cout<<temp1->val<<endl;
         temp1->next=temp1->next->next;
         return head;
 
