@@ -11,16 +11,14 @@ public:
                 m=max(c,m);
                 i+=1;
             }
-            else{
-                if(c>0 ){
+            else if(c>0){
                     power+=tokens[j];
                     c-=1;
                     j-=1;
                 }
-                else{
-                    j-=1;
+            else{
+                    break;
                 }
-            }
         }
         return m;
     }
