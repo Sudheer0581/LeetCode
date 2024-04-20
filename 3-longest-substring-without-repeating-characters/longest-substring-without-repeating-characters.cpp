@@ -1,31 +1,16 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int i=0;
-        int j=0;
+        map<char,int>mp;
+        int x=-1;
         int m=0;
-        int n=s.size();
-        deque<int>dq;
-        while(i<n){
-            if(dq.empty()){
-                dq.push_back(s[i]);
-                i+=1;
+        for(int i=0;i<s.size();i++){
+            if(mp.find(s[i])!=mp.end()){
+                x=max(x,mp[s[i]]);
             }
-            else{
-                while(find(dq.begin(),dq.end(),s[i])!=dq.end()){
-                    dq.pop_front();
-                }
-                dq.push_back(s[i]);
-                if(dq.size()>m){
-                    m=dq.size();
-                }
-                i+=1;
-
-            }
-        }
-        if(dq.size()>m){
-            m=dq.size();
+            mp[s[i]]=i;
+            m=max(m,i-x);
         }
         return m;
     }
-};                                              
+};
