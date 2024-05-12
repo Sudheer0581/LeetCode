@@ -1,19 +1,29 @@
+int findMax(vector<vector<int>>& grid,int i,int j)
+{
+    int maxi = INT_MIN;
+    for(int x=i;x<i+3;x++)
+    {
+        for(int y=j;y<j+3;y++)
+        {
+            maxi = max(maxi,grid[x][y]);
+        }
+    }
+    return maxi;
+}
+
 class Solution {
 public:
     vector<vector<int>> largestLocal(vector<vector<int>>& grid) {
-        int n=grid.size();
-        vector<vector<int>>res(n-2,vector<int>(n-2));
-        for(int i=1;i<n-1;i++){
-            for(int j=1;j<n-1;j++){
-                int t=0;
-                for(int k=i-1;k<=i+1;k++){
-                    for(int x=j-1;x<=j+1;x++){
-                        t=max(t,grid[k][x]);
-                    }
-                }
-                res[i-1][j-1]=t;
+        int n = grid.size();
+        vector<vector<int>> v(n - 2, vector<int>(n - 2));
+        for(int i=0;i<n-2;i++)
+        {
+            for(int j=0;j<n-2;j++)
+            {
+                int max = findMax(grid,i,j);
+                v[i][j] = max;
             }
         }
-        return res;
+        return v;
     }
 };
