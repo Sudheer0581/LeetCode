@@ -12,7 +12,7 @@
 class Solution {
 public:
     bool isMirror(TreeNode* left,TreeNode* right){
-        if(!left and !right) return true;
+        if(left == NULL and right==NULL) return true;
         if(!left or !right) return false;
         return (left->val==right->val) and isMirror(left->left,right->right) and isMirror(left->right,right->left);
     }
