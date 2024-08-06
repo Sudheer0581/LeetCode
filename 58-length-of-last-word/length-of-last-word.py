@@ -1,8 +1,9 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        x=s.split()
-        z=x[::-1]
-        for i in z:
-            k=len(i)
-            break
-        return k
+        t=''
+        x=s.split(" ")
+        for i in x:
+            if i.isalpha():
+                t=i
+        return len(t)
+        
